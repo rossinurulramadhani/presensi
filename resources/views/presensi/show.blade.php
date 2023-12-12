@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class=" form-control" name="nama" id="nama" placeholder="Masukan Nama" value="{{ $presensi->nama }}" disabled>
+                                <input type="text" class=" form-control" name="nama" id="nama" placeholder="Masukan Nama" value="{{ $presensi->user->name }}" disabled>
                             </div>
                               <div class="form-group">
                                 <label for="Kelas">Kelas</label>
@@ -83,16 +83,11 @@
                                 </select>
                             </div>
                         </div>
-                                
-                            
-
-                            
-
-
-                            <!-- /.card-body -->
+                         <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <a href="{{ route('presensi.index') }}" class="btn btn-primary">Back</a>
+                                <a href="{{ route('PDF', $presensi->user_id) }}" class="btn btn-primary">cetak</a>
+                                <a href="{{ route('user.show', $presensi->user_id) }}" class="btn btn-primary">Back</a>
                             </div>
 
                         </div>

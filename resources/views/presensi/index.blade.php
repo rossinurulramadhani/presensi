@@ -70,17 +70,25 @@
                                                                 method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                @can('isAdmin')
+                                                               @can('isAdmin')
+                                                                <a href="{{ route('presensi.show', $values->id) }}"
+                                                                    class="btn-sm btn-info">Show</a>
+                                                                <a href="{{ route('presensi.edit', $values->id) }}"
+                                                                    class="btn-sm btn-warning">Edit</a>
+                                                                <button class="btn-sm btn-danger">Delete</button>
+                                                                @elsecan('isGuru')
                                                                 <a href="{{ route('presensi.show', $values->id) }}"
                                                                     class="btn-sm btn-info">Show</a>
                                                                 <a href="{{ route('presensi.edit', $values->id) }}"
                                                                     class="btn-sm btn-warning">Edit</a>
                                                                 <button class="btn-sm btn-danger">Delete</button>
                                                                 @else
+                                                                <a href="{{ route('presensi.show', $values->id) }}"
+                                                                     class="btn-sm btn-info">Show</a>
+                                                                @endcan
                                                             </form>
-                                                             <a href="{{ route('presensi.show', $values->id) }}"
-                                                                    class="btn-sm btn-info">Show</a>
-                                                            @endcan
+                                                            
+                                                            
                                                         </td>
                                                     </tr>
                                                 @empty
@@ -103,7 +111,6 @@
                 </section>
                 <!-- /.content -->
             </div>
-
     </body>
 @endsection
 @push('script')

@@ -44,8 +44,9 @@
                                 @enderror
                                 <div class="form-group">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Masukan nama" value="{{ $presensi->nama }}">
+                                    <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Masukan nama" value="{{ $presensi->user->name }}">
                                 </div>
+                                    <input type="hidden" class="form-control " name="nama" id="nama" placeholder="Masukan nama" value="{{ $presensi->user->id }}">  
                                 @error('nama')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                                 @enderror

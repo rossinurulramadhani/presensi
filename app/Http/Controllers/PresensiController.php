@@ -21,7 +21,13 @@ class PresensiController extends Controller
             return view('presensi.index', compact('presensis'));
         };
 
-        if ($user->role_id == 2 || $user->role_id == 3){
+        if ($user->role_id == 2) {
+            // $presensis = Presensi::all();
+            $presensis = Presensi::where('user_id',  $user->id)->get();
+            return view('presensi.index', compact('presensis'));
+        };
+
+        if ($user->role_id == 3) {
             $presensis = Presensi::all();
             return view('presensi.index', compact('presensis'));
         };
@@ -103,7 +109,7 @@ class PresensiController extends Controller
 
         $presensi->update($request->all());
 
-        return redirect()->route('presensi.index');
+        return redirect()->route('user.show', $presensi->user_id);
     }
 
     /**
@@ -112,7 +118,7 @@ class PresensiController extends Controller
     public function destroy(Presensi $presensi)
     {
         //
-        $presensi = Presensi::where('id', $presensi->id)->delete();
+        Presensi::where('id', $presensi->id)->delete();
         return redirect()->route('presensi.index');
     }
 }

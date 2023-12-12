@@ -14,15 +14,20 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-color:rgb(61, 93, 126)">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>PRESENSI</b></a>
+   <div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="../../index2.html" class="h1"><b>PRESENSI</b></a>
+    </div>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg"></p>
 
       <form action="{{ route('auth.authentication') }}" method="post">
         @csrf

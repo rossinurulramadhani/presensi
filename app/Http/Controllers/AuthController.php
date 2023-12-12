@@ -75,6 +75,13 @@ class AuthController extends Controller
         //      'password' => Hash::make('12345678'),
         //      'role_id'      => 1,
         //   ]);
+
+        //   $user::create([
+        //      'name' => 'amanda',
+        //      'email' => 'amanda@gmail.com',
+        //      'password' => Hash::make('12345678'),
+        //      'role_id'      => 1,
+        //   ]);
          
          
 
@@ -110,4 +117,6 @@ class AuthController extends Controller
 
         return redirect()->route('auth.login');
     }
+
+    
 }

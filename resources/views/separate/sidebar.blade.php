@@ -1,16 +1,20 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #2F5B68">
   <!-- Brand Logo -->
-  <a>
-      <img src="{{ asset('Template/docs/assets/img/logo.png') }}" alt="AdminLTE Logo" style=" width: 15%; height: 30%;">
-      <span style=" font-size: 17px; color: white;"> SMKN 1 KARAWANG </span>
-  </a>
-
+  
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-            <img src="{{ asset('template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-        </div>
+    
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo mt-5 text-center mb-1">
+    <a class="">
+        <img src="{{ asset('Template/docs/assets/img/approved.png') }}" alt="AdminLTE Logo" style=" width: 15%; height: 30%;">
+        <span style=" font-size: 17px; color: white;"> PRESENSI SISWA </span>
+    </a>
+    </div>
+    <div class="user-panel justify-content-center pt-0 mb-3 d-flex">
         <div class="info">
             <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             {{-- {{ Auth::user()->name }} --}}
@@ -18,16 +22,6 @@
             {{-- {{ route('normal.edit', Auth::user()->id ) }} --}}
         </div>
     </div>
-    </div>
-
-  <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="info" style="color: #ffff">
-              <a style="color: #ffff; font-size: 18px;">Presensi Siswa</a>
-          </div>
-      </div>
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
@@ -57,7 +51,7 @@
                       </p>
                   </a>
                   <ul class="nav nav-treeview">
-                    @can('isAdmin')
+                    @can('isGuru')
                       <li class="nav-item">
                           <a href="{{ route('presensi.create')}}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
@@ -65,24 +59,39 @@
                           </a>
                       </li>
                      <li class="nav-item">
-                          <a href="#" class="nav-link">
+                          <a href="{{ route('user.index') }}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Detail Presensi</p>
                           </a>
                       </li>
-                    @else
-                        <li class="nav-item">
+                    @endcan
+                    @can('isAdmin' )
+                      <li class="nav-item">
                           <a href="{{ route('presensi.create')}}" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Presensi</p>
                           </a>
-                        </li>
-                       <li class="nav-item">
-                        <a href="{{ route('presensi.index') }}" class="nav-link">
+                      </li>
+                     <li class="nav-item">
+                          <a href="{{ route('user.index') }}" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Detail Presensi</p>
+                          </a>
+                      </li>
+                      @endcan
+                      @can('isUser')
+                      <li class="nav-item">
+                        <a href="{{ route('presensi.create')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Data Presensi</p>
+                            <p>Presensi</p>
                         </a>
-                    </li>
+                      </li>
+                     <li class="nav-item">
+                      <a href="{{ route('presensi.index') }}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Data Presensi</p>
+                      </a>
+                  </li>
                   @endcan
                   </ul>
               </li>
